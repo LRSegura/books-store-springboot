@@ -7,24 +7,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/books")
 public class BookController {
 
-    private final BookRepository bookRepository;
+    private final BookRepository repository;
 
     public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+        this.repository = bookRepository;
     }
 
-    @CrossOrigin(origins = "${react.server.path}}")
-    @GetMapping("books")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/find/all")
     public List<Book> findAll() {
-        return bookRepository.findAll();
+        return repository.findAll();
     }
 
-    @CrossOrigin(origins = "${react.server.path}}")
-    @PostMapping("book")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/save")
     public Book createBook(@RequestBody Book book){
-        return bookRepository.save(book);
+        return repository.save(book);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/delete")
+    public void deleteBook(@RequestBody Book book){
+        repository.delete(book);
     }
 }

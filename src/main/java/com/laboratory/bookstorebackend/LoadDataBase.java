@@ -1,6 +1,8 @@
 package com.laboratory.bookstorebackend;
 
+import com.laboratory.bookstorebackend.model.Customer;
 import com.laboratory.bookstorebackend.model.Writer;
+import com.laboratory.bookstorebackend.model.repository.CustomerRepository;
 import com.laboratory.bookstorebackend.model.repository.WriterRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,16 @@ public class LoadDataBase {
         return args -> {
             log.info("PreLoading " + repository.save(new Writer("John","Doe")));
             log.info("PreLoading " + repository.save(new Writer("Louis","Doe")));
+
+        };
+    }
+
+    @Bean
+    CommandLineRunner initDatabaseCustomer(CustomerRepository repository){
+        return args -> {
+            log.info("PreLoading " + repository.save(new Customer("Jade","Doe")));
+            log.info("PreLoading " + repository.save(new Customer("Sara","Doe")));
+
         };
     }
 }
