@@ -1,5 +1,8 @@
 package com.laboratory.bookstorebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +17,7 @@ public class Writer {
     private String name;
     private String lastName;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "writer")
     private List<Book> bookList;
 

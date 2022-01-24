@@ -1,5 +1,8 @@
 package com.laboratory.bookstorebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,13 +17,14 @@ public class Book {
     private String name;
     private Integer year;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "writer_id", foreignKey = @ForeignKey(name = "Book_Writer_Constraint"))
     private Writer writer;
     private BigDecimal price;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
-    private List<Sale> bookList;
+    private List<Sale> saleList;
 
     public Book(String name, Integer year, Writer writer) {
         this.name = name;
@@ -67,12 +71,12 @@ public class Book {
         this.price = price;
     }
 
-    public List<Sale> getBookList() {
-        return bookList;
+    public List<Sale> getSaleList() {
+        return saleList;
     }
 
-    public void setBookList(List<Sale> bookList) {
-        this.bookList = bookList;
+    public void setSaleList(List<Sale> saleList) {
+        this.saleList = saleList;
     }
 
     @Override
@@ -96,7 +100,7 @@ public class Book {
                 ", year=" + year +
                 ", writer=" + writer +
                 ", price=" + price +
-                ", bookList=" + bookList +
+                ", saleList=" + saleList +
                 '}';
     }
 }
