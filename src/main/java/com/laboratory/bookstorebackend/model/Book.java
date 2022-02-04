@@ -1,13 +1,18 @@
 package com.laboratory.bookstorebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Book {
 
     @Id
@@ -17,7 +22,7 @@ public class Book {
     private String name;
     private Integer year;
 
-    @JsonBackReference
+//    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "writer_id", foreignKey = @ForeignKey(name = "Book_Writer_Constraint"))
     private Writer writer;

@@ -1,13 +1,18 @@
 package com.laboratory.bookstorebackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
 public class Writer {
 
     @Id
@@ -17,9 +22,9 @@ public class Writer {
     private String name;
     private String lastName;
 
-    @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "writer")
-    private List<Book> bookList;
+//    @JsonManagedReference
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "writer")
+//    private List<Book> bookList;
 
     public Writer(String name, String lastName) {
         this.name = name;
@@ -49,13 +54,13 @@ public class Writer {
         this.lastName = lastName;
     }
 
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
+//    public List<Book> getBookList() {
+//        return bookList;
+//    }
+//
+//    public void setBookList(List<Book> bookList) {
+//        this.bookList = bookList;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,7 +81,6 @@ public class Writer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", bookList=" + bookList +
                 '}';
     }
 }
