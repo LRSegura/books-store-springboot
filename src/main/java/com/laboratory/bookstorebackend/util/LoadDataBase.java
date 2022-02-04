@@ -1,4 +1,4 @@
-package com.laboratory.bookstorebackend;
+package com.laboratory.bookstorebackend.util;
 
 import com.laboratory.bookstorebackend.model.Customer;
 import com.laboratory.bookstorebackend.model.Writer;
