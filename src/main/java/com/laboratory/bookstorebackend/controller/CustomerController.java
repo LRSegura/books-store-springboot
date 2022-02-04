@@ -29,7 +29,7 @@ public class CustomerController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteWriter(@RequestBody Customer customer){
         repository.delete(customer);
     }

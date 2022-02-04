@@ -45,7 +45,7 @@ public class WriterController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteWriter(@RequestBody Writer writer){
         repository.delete(writer);
     }

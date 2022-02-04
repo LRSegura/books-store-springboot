@@ -29,7 +29,7 @@ public class BookController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteBook(@RequestBody Book book){
         repository.delete(book);
     }
