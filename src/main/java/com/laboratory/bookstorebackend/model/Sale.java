@@ -3,6 +3,7 @@ package com.laboratory.bookstorebackend.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -21,11 +22,11 @@ public class Sale {
     @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "Sale_Book_Constraint"))
     private Book book;
 
-    private LocalDate saleDate;
+    private Date saleDate;
     private Integer amount;
     private BigDecimal total;
 
-    public Sale(Customer customer, Book book, LocalDate saleDate, Integer amount, BigDecimal total) {
+    public Sale(Customer customer, Book book, Date saleDate, Integer amount, BigDecimal total) {
         this.customer = customer;
         this.book = book;
         this.saleDate = saleDate;
@@ -56,11 +57,11 @@ public class Sale {
         this.book = book;
     }
 
-    public LocalDate getSaleDate() {
+    public Date getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(LocalDate saleDate) {
+    public void setSaleDate(Date saleDate) {
         this.saleDate = saleDate;
     }
 
