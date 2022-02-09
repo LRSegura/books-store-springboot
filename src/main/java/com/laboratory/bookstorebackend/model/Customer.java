@@ -14,8 +14,8 @@ public class Customer {
     private String name;
     private String lastName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
-    private List<Sale> saleList;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+//    private List<Sale> saleList;
 
     public Customer(String name, String lastName) {
         this.name = name;
@@ -45,13 +45,13 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public List<Sale> getSaleList() {
-        return saleList;
-    }
-
-    public void setSaleList(List<Sale> saleList) {
-        this.saleList = saleList;
-    }
+//    public List<Sale> getSaleList() {
+//        return saleList;
+//    }
+//
+//    public void setSaleList(List<Sale> saleList) {
+//        this.saleList = saleList;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -72,7 +72,16 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", saleList=" + saleList +
                 '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        return "Customer{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", saleList=" + saleList +
+//                '}';
+//    }
 }
